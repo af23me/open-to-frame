@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open To World - Profile Photo Frame</title>
+    <meta name="description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
+    <link rel="canonical" href="https://melnic.me/open-to/" />
+    <link rel="sitemap" type="application/xml" href="/open-to/sitemap.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://melnic.me/open-to/" />
+    <meta property="og:title" content="Open To World - Profile Photo Frame" />
+    <meta property="og:description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
+    <meta property="og:image" content="https://melnic.me/open-to/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:site_name" content="Open To World" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Open To World - Profile Photo Frame" />
+    <meta name="twitter:description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
+    <meta name="twitter:image" content="https://melnic.me/open-to/og-image.jpg" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Open To World - Profile Photo Frame",
+      "description": "Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame.",
+      "url": "https://melnic.me/open-to/",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen flex flex-col items-center justify-center">
+    <header class="navbar top-0 w-full z-10">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+          <h1 class="text-xl font-semibold text-gray-800">
+            <a href="/open-to/" class="text-gray-800">Photo Frame for any occasion</a>
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20 max-w-6xl mx-auto px-4 pb-8 flex-1">
+      <div class="content-layout">
+        <!-- Left Section 70% -->
+        <div class="preview-section relative bg-white shadow rounded-lg">
+          <!-- Image Header -->
+          <img src="/src/assets/images/mountains.jpg" alt="Frame Header Image" class="w-full h-64 object-cover mb-4 shadow header-image">
+          <!-- SVG positioned 50% from bottom of image -->
+          <div class="canvas-container">
+            <svg id="preview" width="402" height="402" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402 402">
+              <defs>
+                <linearGradient
+                  id="gradientRing"
+                  x1="245"
+                  y1="325"
+                  x2="280"
+                  y2="220"
+                  gradientUnits="userSpaceOnUse">
+                  <stop id="gradientStart" stop-color="#0077B5"></stop>
+                  <stop id="gradientEnd" offset="1" stop-color="#000000" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              
+              <!-- Image container using foreignObject -->
+              <foreignObject x="0" y="0" width="402" height="402">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="width: 402px; height: 402px; overflow: hidden; border-radius: 50%;">
+                  <img id="svgImage" src="/src/assets/images/default.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Avatar">
+                </div>
+              </foreignObject>
+              
+              <!-- Circular path for text -->
+              <path
+                id="textPath"
+                d="M 201.5 199 m -168, 0 a 168,168 0 1,0 336,0 a 168,168 0 1,0 -336,0"
+                stroke="url(#gradientRing)"
+                fill="none"
+                stroke-width="70">
+              </path>
+              
+              <!-- Text that follows the path -->
+              <text dy="0.25em" font-size="3.25rem" font-family="Roboto, Arial, sans-serif">
+                <textPath
+                  id="circularText"
+                  style="fill:#fff"
+                  startOffset="0%"
+                  href="#textPath">
+                  #OpenToWorld
+                </textPath>
+              </text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right Section 30% -->
+        <div class="controls-section">
+          <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Customize Your Frame</h2>
+
+            <!-- Photo Upload -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Upload Photo</label>
+              <input type="file" id="photoInput" accept="image/*" class="hidden">
+              <button id="photoButton" class="btn">
+                Choose Photo
+              </button>
+            </div>
+
+            <!-- Text Overlay -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Frame Text</label>
+              <input type="text" id="textInput" placeholder="Enter your text" value="#OpenToWorld" maxlength="20" class="input-box w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+
+
+            <!-- Frame Color -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Frame Color</label>
+              <div class="flex items-center gap-2">
+                <input type="color" id="frameColorPicker" value="#216D17" class="rounded cursor-pointer color-picker">
+                <input type="text" id="frameColorInput" value="#216D17" placeholder="#216D17" class="input-box flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase">
+              </div>
+            </div>
+
+            <!-- Gradient End Color -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Gradient Color</label>
+              <div class="flex items-center gap-2">
+                <input type="color" id="gradientEndPicker" value="#000000" class="rounded cursor-pointer color-picker">
+                <input type="text" id="gradientEndInput" value="#000000" placeholder="#000000" class="input-box flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase">
+              </div>
+            </div>
+
+            <!-- Text Color -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
+              <div class="flex items-center gap-2">
+                <input type="color" id="textColorPicker" value="#ffffff" class="rounded cursor-pointer color-picker">
+                <input type="text" id="textColorInput" value="#FFFFFF" placeholder="#FFFFFF" class="input-box flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent uppercase">
+              </div>
+            </div>
+
+            <button id="downloadBtn" class="btn px-4 py-2 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>Download Frame</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="w-full bg-white py-4 mt-8">
+      <div class="max-w-6xl mx-auto px-4 flex items-center justify-center gap-4">
+        <a href="/open-to/privacy-policy/" class="text-gray-600 hover:text-gray-800 transition-colors">Privacy Policy</a> | 
+        <span class="text-gray-600">Made with fun</span>
+        <a href="https://ai-label.org/" target="_blank" rel="noopener noreferrer" aria-label="AI-assisted code - Learn more at AI Label">
+          <img src="/src/assets/images/assisted-by-ai.svg" alt="Assisted by AI" class="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+        </a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/assets/main.js"></script>
+  </body>
+</html>
