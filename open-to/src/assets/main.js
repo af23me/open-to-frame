@@ -17,14 +17,6 @@ const gradientEndPicker = document.getElementById('gradientEndPicker');
 const gradientEndInput = document.getElementById('gradientEndInput');
 const downloadBtn = document.getElementById('downloadBtn');
 
-// Apply anchor text from URL (e.g. /open-to#SayHi → #SayHi)
-if (window.location.hash) {
-  const hashText = '#' + decodeURIComponent(window.location.hash.slice(1));
-  textInput.value = hashText;
-}
-
-// Update SVG initially
-updateSVG();
 
 // Handle photo upload
 photoInput.addEventListener('change', (e) => {
@@ -153,6 +145,15 @@ function centerTextOnPath() {
     gradientRing.setAttribute('y1', y1.toFixed(2));
   });
 }
+
+// Apply anchor text from URL (e.g. /open-to#SayHi → #SayHi)
+if (window.location.hash) {
+  const hashText = '#' + decodeURIComponent(window.location.hash.slice(1));
+  textInput.value = hashText;
+}
+
+// Update SVG initially
+updateSVG();
 
 // Handle download - Convert SVG to PNG
 downloadBtn.addEventListener('click', () => {

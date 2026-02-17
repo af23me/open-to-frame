@@ -4,7 +4,7 @@ A lightweight, client-side JavaScript web application that allows users to creat
 
 ## Demo
 
-Try the live demo [here](https://melnic.me/open-to)
+Try the live demo [here](https://melnic.me/open-to/){:target="_blank"}
 
 ![Demo Image](open-to/public/og-image.jpg)
 
@@ -14,11 +14,10 @@ Try the live demo [here](https://melnic.me/open-to)
 - **Custom Text**: Add personalized text overlays
 - **Text Customization**:
   - Text color picker
-  - Position controls (Top, Bottom, Center)
-- **Frame Options**:
-  - Predefined frame styles (LinkedIn Blue, Green, Red, Purple)
+  - Frame color picker
 - **Live Preview**: Real-time canvas updates
 - **Export**: Download final image as PNG
+- **Privacy first**: All processing happens in your browser - no data is sent to servers
 
 ## Technologies Used
 
@@ -51,7 +50,7 @@ Start the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+The application will be available at `http://localhost:5173/open-to/`
 
 ### Build for Production
 
