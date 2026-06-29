@@ -8,10 +8,24 @@ A client-side profile photo frame generator. Users upload a photo, customize cir
 
 ## Commands
 
-- `npm run dev` — Start Vite dev server
-- `npm run build` — Production build to `dist/open-to/`
+- `npm run dev` — Start Vite dev server (opens at the configured `BASE_PATH`, default `/`)
+- `npm run build` — Production build (default output `dist/`, served at site root `/`)
 - `npm run preview` — Preview production build
 - `npx eslint open-to/src/` — Lint JS files
+
+### Configurable deploy route
+
+The build is path-agnostic, driven by two env vars (committed defaults in `.env`):
+
+- `BASE_PATH` (default `/`) — route the app is served from. Drives Vite `base`, the output
+  directory (which **mirrors** the path), in-app crosslinks, and the SEO/sitemap path.
+- `SITE_URL` (default `https://melnic.me`) — absolute origin for SEO tags + sitemap.
+
+CLI/process env overrides the `.env` default:
+
+```bash
+BASE_PATH=/mini-apps/open-for/ npm run build   # -> dist/mini-apps/open-for/{index.html,privacy-policy/index.html,sitemap.xml,...}
+```
 
 ## Architecture
 
@@ -26,10 +40,20 @@ The frame rendering uses an inline SVG in `index.html` with a `foreignObject` fo
 
 ## Build Configuration
 
-- **Vite** with `base: './'` for relative asset paths. Build expects entry points at `src/index.html` and `src/privacy-policy/index.html` (configured in `vite.config.js` `rollupOptions.input`)
-- **Tailwind CSS v3** via PostCSS, with content scanning `./index.html` and `./src/**/*.{js,ts,jsx,tsx}`
-- **PostCSS** plugins: tailwindcss, autoprefixer, cssnano
-- **Terser** minification with console stripping in production
+- **Vite** root is `open-to/`; entry points are `open-to/index.html` and
+  `open-to/privacy-policy/index.html` (configured in `vite.config.js` `rollupOptions.input`).
+- **`base` / `outDir` are computed** from `BASE_PATH` (see above). `normalizeBase()` ensures a
+  single leading+trailing slash. Vite auto-prepends `base` to asset/script `src`s, so those
+  stay as `/src/assets/...` in source.
+- **Non-asset URLs use tokens.** Anchor `href`s and absolute SEO URLs (which Vite does *not*
+  rewrite) use `{{BASE}}` and `{{SITE_URL}}` placeholders in the HTML, resolved by the
+  `openfor-base-config` plugin's `transformIndexHtml` hook (runs in dev **and** build).
+- **`sitemap.xml` is generated** at build time by that same plugin (`generateBundle` +
+  `emitFile`) from `SITE_URL` + `base` — it is *not* a static file in `public/`.
+- **Tailwind CSS v3** via PostCSS, content scanning `./open-to/**/*.html` and
+  `./open-to/src/**/*.{js,ts,jsx,tsx}`.
+- **PostCSS** plugins: tailwindcss, autoprefixer, cssnano.
+- **Terser** minification with console stripping in production.
 
 ## Code Style
 

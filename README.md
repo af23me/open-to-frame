@@ -4,7 +4,7 @@ A lightweight, client-side JavaScript web application that allows users to creat
 
 ## Demo
 
-Try the live demo [here](https://melnic.me/open-to/){:target="_blank"}
+Try the live demo [here](https://melnic.me/mini-apps/open-to/)
 
 ![Demo Image](open-to/public/og-image.jpg)
 
@@ -50,13 +50,46 @@ Start the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173/open-to/`
+The dev server opens at the configured base path (default `http://localhost:5173/`).
 
 ### Build for Production
 
 ```bash
 npm run build
 ```
+
+By default the app builds to the **site root** (`dist/index.html`, served at `/`).
+
+### Deploying under a sub-route
+
+The build is path-agnostic and configured via two environment variables (committed
+defaults live in [`.env`](.env)):
+
+| Variable    | Default               | Purpose |
+|-------------|-----------------------|---------|
+| `BASE_PATH` | `/`                   | Route the app is served from. Drives the Vite base, the output directory (`dist` mirrors this path), all in-app crosslinks, and the path portion of the SEO URLs / sitemap. |
+| `SITE_URL`  | `https://example.com`   | Absolute origin used to build the SEO tags (canonical, `og:url`, `og:image`, JSON-LD) and `sitemap.xml`. |
+
+Override them per build (CLI env wins over `.env`):
+
+```bash
+# Build for https://example.com/example/open-for/
+BASE_PATH=/example/open-for/ SITE_URL=https://example.com npm run build
+```
+
+This emits a ready-to-mount tree at `dist/mini-apps/open-for/`:
+
+```
+dist/mini-apps/open-for/
+├── index.html
+├── privacy-policy/index.html
+├── sitemap.xml          # generated, <loc>s match SITE_URL + BASE_PATH
+├── og-image.jpg
+└── assets/…
+```
+
+All assets, crosslinks, and SEO URLs resolve under the configured route — copy the folder
+onto your server tree as-is.
 
 ## Usage
 
@@ -69,7 +102,8 @@ npm run build
 
 ## Project Structure
 
-Project is configured to be built under `open-to` directory and accessed by plain HTML.
+Source lives under the `open-to/` directory (the Vite root). The output route and origin are
+configurable at build time — see [Deploying under a sub-route](#deploying-under-a-sub-route).
 
 ## Browser Support
 

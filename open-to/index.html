@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Open To World - Profile Photo Frame</title>
     <meta name="description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
-    <link rel="canonical" href="https://melnic.me/open-to/" />
-    <link rel="sitemap" type="application/xml" href="/open-to/sitemap.xml" />
+    <link rel="canonical" href="{{SITE_URL}}{{BASE}}" />
+    <link rel="sitemap" type="application/xml" href="{{BASE}}sitemap.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://melnic.me/open-to/" />
+    <meta property="og:url" content="{{SITE_URL}}{{BASE}}" />
     <meta property="og:title" content="Open To World - Profile Photo Frame" />
     <meta property="og:description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
-    <meta property="og:image" content="https://melnic.me/open-to/og-image.jpg" />
+    <meta property="og:image" content="{{SITE_URL}}{{BASE}}og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="1200" />
     <meta property="og:site_name" content="Open To World" />
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Open To World - Profile Photo Frame" />
     <meta name="twitter:description" content="Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame." />
-    <meta name="twitter:image" content="https://melnic.me/open-to/og-image.jpg" />
+    <meta name="twitter:image" content="{{SITE_URL}}{{BASE}}og-image.jpg" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -32,7 +32,7 @@
       "@type": "WebApplication",
       "name": "Open To World - Profile Photo Frame",
       "description": "Create a personalized profile photo frame with any text for Linkedin, Facebook, Telegram, etc. Upload your photo, customize text and colors, and download your unique frame.",
-      "url": "https://melnic.me/open-to/",
+      "url": "{{SITE_URL}}{{BASE}}",
       "applicationCategory": "DesignApplication",
       "operatingSystem": "Any",
       "offers": {
@@ -52,7 +52,7 @@
       <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center">
           <h1 class="text-xl font-semibold text-gray-800">
-            <a href="/open-to/" class="text-gray-800">Photo Frame for any occasion</a>
+            <a href="{{BASE}}" class="text-gray-800">Photo Frame for any occasion</a>
           </h1>
         </div>
       </div>
@@ -79,14 +79,14 @@
                   <stop id="gradientEnd" offset="1" stop-color="#000000" stop-opacity="0"></stop>
                 </linearGradient>
               </defs>
-              
+
               <!-- Image container using foreignObject -->
               <foreignObject x="0" y="0" width="402" height="402">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="width: 402px; height: 402px; overflow: hidden; border-radius: 50%;">
                   <img id="svgImage" src="/src/assets/images/default.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Avatar">
                 </div>
               </foreignObject>
-              
+
               <!-- Circular path for text -->
               <path
                 id="textPath"
@@ -95,7 +95,7 @@
                 fill="none"
                 stroke-width="70">
               </path>
-              
+
               <!-- Text that follows the path -->
               <text dy="0.25em" font-size="3.25rem" font-family="Roboto, Arial, sans-serif">
                 <textPath
@@ -166,8 +166,8 @@
 
     <footer class="w-full bg-white py-4 mt-8">
       <div class="max-w-6xl mx-auto px-4 flex items-center justify-center gap-4">
-        <a href="/open-to/privacy-policy/" class="text-gray-600 hover:text-gray-800 transition-colors">Privacy Policy</a> | 
-        <a href="https://github.com/af23me/open-to-frame" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">GitHub</a> | 
+        <a href="{{BASE}}privacy-policy/" class="text-gray-600 hover:text-gray-800 transition-colors">Privacy Policy</a> |
+        <a href="https://github.com/af23me/open-to-frame" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors">GitHub</a> |
         <span class="text-gray-600">Made with fun</span>
         <a href="https://ai-label.org/" target="_blank" rel="noopener noreferrer" aria-label="AI-assisted code - Learn more at AI Label">
           <img src="/src/assets/images/assisted-by-ai.svg" alt="Assisted by AI" class="h-8 opacity-60 hover:opacity-100 transition-opacity" />
